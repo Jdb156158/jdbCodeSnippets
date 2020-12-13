@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    func setupGetAccountsButton() {
+        getAccountsButton.apply(theme: TrustButtonTheme
+            .white
+            .with(styles: .title(.plain("Get Accounts")), .icon(.trust), .roundFull)
+        )
+
+        getAccountsButton.action = .getAccounts(coins: [.ethereum, .binance]) { result in
+            switch result {
+            case .success(let addresses):
+                let alert = UIAlertController(
+                    title: "Address",
+                    message: addresses.joined(separator: ", "),
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            case .failure(let error):
+                print("Failed to get addresses: \(error)")
+            }
+        }
+    }
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>9B79775F-8139-4145-B229-03CF86C15D0D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>测试1</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>setupGetAccountsButton</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
